@@ -98,13 +98,11 @@
 
             topDiv.appendTo(div);
             $(box.content).appendTo(div);
-            div.hide();
-            $(panes.floatPane).append(div);
+            div.hide().appendTo(panes.floatPane);
             this.panMap();
         } else if (div.parentNode != panes.floatPane) {
             // The panes have changed.  Move the div.
-            div.hide();
-            $(panes.floatPane).append(div);
+            div.detach().appendTo(panes.floatPane);
         }
     }
     
@@ -193,7 +191,7 @@
             markerTitle: 'Marker',
             markerIcon: null,
             markerShadow: null,
-            //Add css options and background images.
+            // TODO: Add css options and background images.
             contentString: 'Hello World'
             
         },
