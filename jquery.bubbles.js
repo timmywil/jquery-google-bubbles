@@ -178,14 +178,14 @@
     
     
     
-    // A reference to the GBubble prototype
+    // A reference to the Bubbles prototype
     var bubbleP,
-    // When called, initialize GBubble with arguments given
-    GBubble = function() {
+    // When called, initialize Bubbles with arguments given
+    Bubbles = function() {
         return new bubbleP.init(arguments);
     };
     
-    bubbleP = GBubble.prototype = {
+    bubbleP = Bubbles.prototype = {
         
         opts : {
         
@@ -193,6 +193,7 @@
             markerTitle: 'Marker',
             markerIcon: null,
             markerShadow: null,
+            //Add css options and background images.
             contentString: 'Hello World'
             
         },
@@ -265,15 +266,15 @@
                   var iBox = new infoBox({ latlng: marker.getPosition(), map: map, content: content });
             });
         }
-    }
+    };
     bubbleP.init.prototype = bubbleP;
     
     // Extend jQuery
     $.fn.elect = function() {
         var args = Array.prototype.slice.call(arguments);
         this.each(function() {
-            // Apply GBubble to each element
-            GBubble.apply(null, args));
+            // Apply Bubbles to each element
+            Bubbles.apply(null, args));
         });
         // return jQuery object for chaining
         return this;
