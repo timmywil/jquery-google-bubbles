@@ -13,7 +13,7 @@
 *
 *   About: Release History
 *   
-*   Unreleased.  This code is not useable yet.
+*   Unreleased.  This code is not quite useable yet.
 *   
 *   Example:
 *
@@ -35,7 +35,7 @@
         ov.offsetHorizontal = -20;
         ov.height = 165;
         ov.width = 208;
-        ov.boundsChangedListener_ = 
+        ov.boundsChangedListener = 
             google.maps.event.addListener(this.map, "bounds_changed", function() {
                 return ov.panMap.apply(ov);
             });
@@ -44,11 +44,6 @@
     }
     
     infoBox.prototype = new google.maps.OverlayView();
-    
-    // Clear the way for creating the div
-    infoBox.prototype.remove = function() {
-        if(this.div_.size()) this.div_.remove();
-    }
     
     // Redraw the bar based on the current position and zoom level
     infoBox.prototype.draw = function() {
@@ -99,10 +94,8 @@
                 };
             }
             
-            //google.maps.event.addDomListener(closeImg, 'click', removeInfoBox(this));
-            closeImg.click(function() {
-                div.hide();
-            });
+            google.maps.event.addDomListener(closeImg[0], 'click', removeInfoBox(this));
+
             topDiv.appendTo(div);
             $(box.content).appendTo(div);
             div.hide();
@@ -178,69 +171,112 @@
         map.setCenter(new google.maps.LatLng(centerY, centerX));
         
         // Remove the listener after panning is complete.
-        google.maps.event.removeListener(this.boundsChangedListener_);
-        this.boundsChangedListener_ = null;
+        google.maps.event.removeListener(this.boundsChangedListener);
+        this.boundsChangedListener = null;
     };
     
-    eee,
-    // and Elect, when called, returns an Elect object that's
-    // been init()ed with whatever arguments are supplied
-    Elect = function() {
-        return new eee.init(arguments);
+    
+    
+    
+    // A reference to the GBubble prototype
+    var bubbleP,
+    // When called, initialize GBubble with arguments given
+    GBubble = function() {
+        return new bubbleP.init(arguments);
     };
     
-    google.maps.Ov = function(map) {
-      google.maps.OverlayView.call(this);
-      this.setMap(map); 
-    }
-    google.maps.Ov.prototype = new google.maps.OverlayView(); 
-    google.maps.Ov.prototype.draw = function () { 
-      if (!this.ready) { 
-        this.ready = true; 
-        google.maps.event.trigger(this, 'ready'); 
-      } 
-    };
-    google.maps.Ov.prototype.lltp = function(latlng){
-        return this.getProjection().fromLatLngToDivPixel(latlng);
-    };
+    bubbleP = GBubble.prototype = {
         
-    var latlng = new google.maps.LatLng(36.915, -95.225);
-    var map = new google.maps.Map(
-        $('#dealer-map')[0], 
-        { zoom: 4,
-        scrollwheel: 0,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
-            navigationControlOptions: {
-                style: google.maps.NavigationControlStyle.ZOOM_PAN
+        opts : {
+        
+            markers: {},
+            markerTitle: 'Marker',
+            markerIcon: null,
+            markerShadow: null,
+            contentString: 'Hello World'
+            
+        },
+        init : function(args) {
+            
+            // Put args in an array
+            var a = Array.prototype.slice.call(args);
+            
+            // Pop the first arg off the array, which is the element
+            // Bubbles was called on
+            this.mapEl = $(a.shift());
+            
+            // Create a default map with the given 
+            // element id that Bubbles was called on.
+            // This can be replaced with arguments.
+            this.opts.map = new google.maps.Map(mapEl[0], { 
+                    zoom: 4, 
+                    scrollwheel: 0, 
+                    center: new google.maps.LatLng(36.915, -95.225), 
+                    mapTypeId: google.maps.MapTypeId.ROADMAP, 
+                    mapTypeControl: false, 
+                    navigationControlOptions: { style: google.maps.NavigationControlStyle.ZOOM_PAN } }
+            
+            // Add in options to opts        
+            $.extend(this.opts, a[0] || {});
+            
+            google.maps.Ov = function(map) {
+              google.maps.OverlayView.call(this);
+              this.setMap(map); 
             }
-    });        
+            google.maps.Ov.prototype = new google.maps.OverlayView(); 
+            google.maps.Ov.prototype.draw = function () { 
+              if (!this.ready) { 
+                this.ready = true; 
+                google.maps.event.trigger(this, 'ready'); 
+              } 
+            };
+            google.maps.Ov.prototype.lltp = function(latlng){
+                return this.getProjection().fromLatLngToDivPixel(latlng);
+            };       
+            
+            setMarkers(this.opts.map, this.opts.markers);
+            
+        },
+        
+        // Add all markers to the map
+        setMarkers : function(map, markers) {
+          for (var i = 0; i < markers.length; i++) {
+                attachInfo(map, markers[i]);
+          }
+        },
+        
+        // Add an individual marker to the map
+        attachInfo : function(map, marker) {
+            var map = this.opts.map,
+                title = this.opts.markerTitle,
+                icon = this.opts.markerIcon,
+                shadow = this.opts.markerShadow,
+                content = this.opts.contentString,
+                myLatLng = new google.maps.LatLng(marker.latlng[0], marker.latlng[1]),
+                marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: title,
+                    icon: icon,
+                    shadow: shadow
+                });
     
-    if(! window.map) window.map = map;
-    
-    setMarkers(map);
-    
-    function setMarkers(map) {
-      // Add markers to the map
-      for (var i = 0; i < dealers.length; i++) {
-            attachInfo(map, dealers[i]);
-      }
-    };
-    
-    function attachInfo(map, dealer) {
-        var myLatLng = new google.maps.LatLng(dealer.latlng[0], dealer.latlng[1]);
-        var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: dealer.name,
-                icon: image,
-                shadow: shadow
-        }); 
-
-        google.maps.event.addListener(marker, 'click', function(){
-              var iBox = new infoBox({latlng: marker.getPosition(), map: map, content: contentString});
-        });
+            google.maps.event.addListener(marker, 'click', function(){
+                  var iBox = new infoBox({ latlng: marker.getPosition(), map: map, content: content });
+            });
+        }
     }
+    bubbleP.init.prototype = bubbleP;
+    
+    // Extend jQuery
+    $.fn.elect = function() {
+        var args = Array.prototype.slice.call(arguments);
+        this.each(function() {
+            // Apply GBubble to each element
+            GBubble.apply(null, args));
+        });
+        // return jQuery object for chaining
+        return this;
+    };
 
 }(jQuery);
