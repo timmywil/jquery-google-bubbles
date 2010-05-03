@@ -1,0 +1,32 @@
+/*
+ _/_/_/_/_/ _/    _/      _/    _/      _/  _/   _/
+   _/      _/    _/_/  _/_/    _/_/  _/_/    _/_/
+  _/      _/    _/  _/  _/    _/  _/  _/     _/
+ _/      _/    _/      _/    _/      _/     _/
+_/      _/    _/      _/    _/      _/     _/ 
+
+*   example.css
+*   timmy willison
+*   jQuery Google Bubbles Example
+*   5/2/10
+*/
+
+/* RESET */
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input { margin: 0; padding: 0; }
+h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th { font-size: 1em; font-weight: normal; font-style: normal; }
+ul,ol { list-style: none; }
+fieldset,img { border: 0 none; }
+caption,th { text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; }
+:focus { outline: 0; }
+/*{ behavior: url(/exceed/css/iepngfix.htc); }*/
+
+/* TYPE */
+body { background-color: #ffffff; font-family: Arial, sans-serif; font-size: 12px; }
+
+/* GOOGLE MAP */
+#google-map-wrap { position: relative; top: 20px; width: 800px; left: 0; right: 0; margin: 0 auto; padding-bottom: 30px; }
+#google-loading { position: absolute; width: 800px; height: 500px; background: transparent url(images/loading.gif) no-repeat 50% 45%; }
+#google-map { width: 800px; height: 500px; position: absolute; border: 2px solid black; overflow: hidden; }
+div.iw-content { min-height: 90px; overflow: auto; }
+div.iw-content p { color: red; }

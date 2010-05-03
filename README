@@ -1,8 +1,70 @@
-jQuery Google Bubbles
-http://github.com/timmywil/googlebubbles
 
-Author: timmy willison
-This is a jQuery plugin for changing the look of
-Google maps pins and info windows.
+   jQuery Google Bubbles
+   http://github.com/timmywil/googlebubbles
 
-Coming soon.
+   author: timmy willison
+   This is a jQuery plugin for changing the look of
+   Google maps pins and info windows.
+   SDG
+   
+   license:   
+   Copyright (c) 2010 timmy willison
+   MIT License
+
+   about: Release History
+   
+   0.1 : First release ( 5/2/10 )
+   
+   examples (All options are optional):
+    
+    $('#google-map').bubbles();
+    
+    $('#another-map').bubbles({
+      
+      // If you wish to use the default map, 
+      // but just want to change the center
+      // ****NOTE: This gets overwritten if a map is passed in (see next).
+      center: { lat: 36.915, lng: -95.225 },
+      
+      // Your own map that you created with the Google V3 API
+      map: myGoogleMap,
+      
+      // An unlimited number of markers may be put on the map.
+      // Add latitudes and longitudes for where they should be placed,
+      // a title for each marker,
+      // and a content string for their corresponding info window.
+      // ex: [ { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' }, 
+      //   { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ]
+      markers: [ { lat : 35.289, lng : -94.756, title: 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ],
+      
+      // Custom image for 
+      markerIcon: 'images/google-maps-icon.png',
+      
+      // The shadow for the marker image
+      markerShadow: 'images/google-maps-shadow.png',
+                  
+      // The info window background image
+      windowImage: 'images/google-maps-infobox.png',
+      
+      // The close image that goes on the info window
+      closeImage: 'images/google-maps-close.png',
+      
+      // Offsets for the position of the info window
+      // relative to the marker
+      offsetVertical: -226,
+      offsetHorizontal: -20,
+      
+      // Width and Height of the info window
+      // background image.
+      iwWidth: 208,
+      iwHeight: 165
+    });
+   
+   tip: If all you need is a custom pin and no custom info window,
+     don't use this plugin.  That is too easy with the normal
+     Google API (see the attachInfo function below).
+    
+   demo: http://timmywillison.com/samples/bubbles/example.html 
+   github: http://github.com/timmywil/jquery-google-bubbles
+   source: http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js ( 11 kb )
+   (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js ( 4.9 kb )
