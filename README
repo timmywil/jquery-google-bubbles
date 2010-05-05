@@ -37,16 +37,16 @@
       //   { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ]
       markers: [ { lat : 35.289, lng : -94.756, title: 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ],
       
-      // Custom image for 
+      // Custom image for the marker
       markerIcon: 'images/google-maps-icon.png',
       
       // The shadow for the marker image
       markerShadow: 'images/google-maps-shadow.png',
                   
-      // The info window background image
+      // The info window background image (includes its own shadow if one is needed)
       windowImage: 'images/google-maps-infobox.png',
       
-      // The close image that goes on the info window
+      // The close image/button that goes on the info window
       closeImage: 'images/google-maps-close.png',
       
       // Offsets for the position of the info window
@@ -54,8 +54,7 @@
       offsetVertical: -226,
       offsetHorizontal: -20,
       
-      // Width and Height of the info window
-      // background image.
+      // Width and Height of the info window background image
       iwWidth: 208,
       iwHeight: 165
     });
