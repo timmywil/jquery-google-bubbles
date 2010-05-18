@@ -35,7 +35,10 @@
       // and a content string for their corresponding info window.
       // ex: [ { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' }, 
       //   { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ]
-      markers: [ { lat : 35.289, lng : -94.756, title: 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ],
+      markers: [ { lat : 35.289, 
+                   lng : -94.756, 
+                   title: 'woot', 
+                   content : '<div class="iw-content"><p>Hello World!!</p></div>' } ],
       
       // Custom image for the marker
       markerIcon: 'images/google-maps-icon.png',
@@ -65,5 +68,5 @@
     
    demo: http://timmywillison.com/samples/bubbles/example.html 
    github: http://github.com/timmywil/jquery-google-bubbles
-   source: http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js ( 11 kb )
+   source: http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js ( 11.9 kb )
    (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js ( 4.9 kb )
