@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>jQuery Google Bubbles Example</title>
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+  <meta name="Author" content="timmy willison"/>
+  <meta name="Description" content="An example of how to use the jQuery Google Bubbles plugin to create custom info windows and pins."/>
+  <meta name="Keywords" content="jquery jQuery Google google Bubbles bubbles plugin Plugin"/>
+  <link rel="stylesheet" type="text/css" href="example.css"/>
+  <script type="text/javascript" charset="utf-8" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" charset="utf-8">
+    google.load('jquery','1.4.2');
+  </script>
+  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8" src="bubbles.jquery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#google-map').bubbles();
+    });
+  </script>
+</head>
+<body>
+  <div id="google-map-wrap">
+    <div id="google-loading"></div>
+    <div id="google-map"></div>
+  </div><!--/google-map-wrap-->
+</body>
+</html>
