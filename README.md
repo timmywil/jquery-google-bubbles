@@ -2,8 +2,8 @@
 
 Demo: <a href="http://timmywillison.com/samples/bubbles/example.html">http://timmywillison.com/samples/bubbles/example.html</a><br/>
 Github: <a href="http://github.com/timmywil/jquery-google-bubbles">http://github.com/timmywil/jquery-google-bubbles</a><br/>
-Source: <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js</a> ( 11 kb )<br/>
-(minified): <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js</a> ( 4.0 kb )<br/>
+Source: <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js</a> ( 11 kb )<br/>
+(minified): <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.min.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js</a> ( 4.0 kb )<br/>
 
 *Version: 0.7, Last updated: 10/23/2010*
 
