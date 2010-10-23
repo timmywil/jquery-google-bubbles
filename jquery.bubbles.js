@@ -36,15 +36,12 @@
 
 ;(function($) {
 
-    // A reference to the bubbles prototype
-    var bp,
-    
     // When called, initialize bubbles with arguments given
-    bubbles = function() {
+    var bubbles = function() {
         return new bp.init(arguments);
     };
     
-    bp = bubbles.prototype = {
+    var bp = bubbles.prototype = {
         
         opts : {
         
@@ -126,12 +123,12 @@
         
         // Add an individual marker to the map
         attachInfo : function(map, marker) {
-            var map = this.opts.map,
-                title = marker.title,
-                icon = this.opts.markerIcon,
-                shadow = this.opts.markerShadow,
-                content = marker.content,
-                mLatLng = new google.maps.LatLng(marker.lat, marker.lng),
+            var map      = this.opts.map,
+                title    = marker.title,
+                icon     = this.opts.markerIcon,
+                shadow   = this.opts.markerShadow,
+                content  = marker.content,
+                mLatLng  = new google.maps.LatLng(marker.lat, marker.lng),
                 g_marker = new google.maps.Marker({
                     position : mLatLng,
                     map : map,
@@ -140,6 +137,7 @@
                     shadow : shadow
                 });
             var b = this.opts;
+
             google.maps.event.addListener(g_marker, 'click', function() {
                   var iBox = new infoBox({ latlng: g_marker.getPosition(), map: map, content: content, offsetVertical: b.offsetVertical, 
                     offsetHorizontal: b.offsetHorizontal, height: b.iwHeight, width: b.iwWidth, windowImage: b.windowImage, 
@@ -153,15 +151,15 @@
     var infoBox = function(args) {
         var ibox = this;
         google.maps.OverlayView.call(ibox);
-        ibox.latlng = args.latlng;
-        ibox.map = args.map;
-        ibox.content = args.content;
-        ibox.offsetVertical = args.offsetVertical;
+        ibox.latlng           = args.latlng;
+        ibox.map              = args.map;
+        ibox.content          = args.content;
+        ibox.offsetVertical   = args.offsetVertical;
         ibox.offsetHorizontal = args.offsetHorizontal;
-        ibox.height = args.height;
-        ibox.width = args.width;
-        ibox.windowImage = args.windowImage;
-        ibox.closeImage = args.closeImage;
+        ibox.height           = args.height;
+        ibox.width            = args.width;
+        ibox.windowImage      = args.windowImage;
+        ibox.closeImage       = args.closeImage;
         ibox.boundsChangedListener = 
             google.maps.event.addListener(ibox.map, "bounds_changed", function() {
                 return ibox.panMap.apply(ibox);
@@ -179,9 +177,10 @@
     // Called from within draw.  Alternatively, this can be called specifically on
     // a panes_changed event.
     infoBox.prototype.createElement = function() {
-        var box = this,
+        var box   = this,
             panes = box.getPanes(),
-            div = box.div_;
+            div   = box.div_;
+
         if(!div) {
             div = box.div_ = $('<div/>').css({
                 'border': '0 none',
@@ -294,11 +293,11 @@
         this.createElement();
         var pixPosition = this.getProjection().fromLatLngToDivPixel(this.latlng);
         $(this.div_).css({
-            width     : this.width,
-            left      : (pixPosition.x + this.offsetHorizontal),
-            height    : this.height,
-            top       : (pixPosition.y + this.offsetVertical),
-            'display' : 'block'
+            width: this.width,
+            left: (pixPosition.x + this.offsetHorizontal),
+            height: this.height,
+            top: (pixPosition.y + this.offsetVertical),
+            'display': 'block'
         });
     };
     
