@@ -37,12 +37,12 @@ $('#another-map').bubbles({
     // Add latitudes and longitudes for where they should be placed,
     // a title for each marker,
     // and a content string for their corresponding info window.
-    // ex: [ { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' }, 
-    //   { lat : 35.289, lng : -94.756, title : 'woot', content : '<div class="iw-content"><p>Hello World!!</p></div>' } ]
+    // ex: [ { lat : 35.289, lng : -94.756, title : 'woot', content : '&lt;div class=&quot;iw-content&quot;&gt;&lt;p&gt;Hello World!!&lt;/p&gt;&lt;/div&gt;' }, 
+    //   { lat : 35.289, lng : -94.756, title : 'woot', content : '&lt;div class=&quot;iw-content&quot;&gt;&lt;p&gt;Hello World!!&lt;/p&gt;&lt;/div&gt;' } ]
     markers: [ { lat : 35.289, 
                  lng : -94.756, 
                  title: 'woot', 
-                 content : '<div class="iw-content"><p>Hello World!!</p></div>' } ],
+                 content : '&lt;div class=&quot;iw-content&quot;&gt;&lt;p&gt;Hello World!!&lt;/p&gt;&lt;/div&gt;' } ],
   
     // Custom image for the marker
     markerIcon: 'images/google-maps-icon.png',
