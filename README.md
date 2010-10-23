@@ -13,7 +13,7 @@ SDG
 
 <h3>About: Release History</h3>
 
-0.7 : Polished and tested ( 10/23/10 )
+0.7 : Polished and tested ( 10/23/10 )<br/>
 0.1 : First release ( 5/2/10 )
 
 <h3>Usage</h3>
