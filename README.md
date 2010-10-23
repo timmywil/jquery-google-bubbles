@@ -69,4 +69,4 @@ $('#another-map').bubbles({
 
 *TIP: If all you need is a custom pin and no custom info window,
  don't use this plugin.  That is too easy with the normal
- Google API (see the attachInfo function below).*
+ Google API (see my attachInfo function).*
