@@ -1,37 +1,44 @@
-/*
-*   jQuery Google Bubbles
-*   http://github.com/timmywil/googlebubbles
-*
-*   author: timmy willison
-*   This is a jQuery plugin for changing the look of
-*   Google maps pins and info windows.
-*   SDG
-*   
-*   license:   
+/**
+*   @preserve jQuery Google Bubbles: Google Maps Custom Info Windows - v0.7 - 10/23/2010
+*   http://timmywillison.com/samples/bubbles/example.html
 *   Copyright (c) 2010 timmy willison
-*   MIT License
-*
-*   about: Release History
-*   
-*   0.1 : First release ( 5/2/10 )
-*   
-*   examples: $('#google-map').bubbles();
-*     $('#another-map').bubbles({
-*   
-*   tip: If all you need is a custom pin and no custom info window,
-*     don't use this plugin.  That is too easy with the normal
-*     Google API (see the attachInfo function below).
-*
-*   demo: http://timmywillison.com/samples/bubbles/example.html
-*   github: http://github.com/timmywil/jquery-google-bubbles
-*   source: http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js ( 11.9 kb )
-*   (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js ( 3.9 kb )
+*   Dual licensed under the MIT and GPL licences.
+*   http://timmywillison.com/licence/
 */
+
+// *Version: 1.2, Last updated: 10/5/2010*
+// 
+// Demo: http://timmywillison.com/samples/bubbles/example.html
+// Github: http://github.com/timmywil/jquery-google-bubbles
+// Source: http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.js ( 11.9 kb )
+// (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.min.js ( 3.9 kb )
+// 
+// License
+// 
+// Copyright (c) 2010 timmy willison,
+// Dual licensed under the MIT and GPL licenses.
+// http://timmywillison.com/licence/
+// 
+// Support and Testing
+// 
+// Versions of jQuery and browsers this was tested on.
+// 
+// jQuery Versions - 1.3.0-1.4.2
+// Browsers Tested - Internet Explorer 6-8, Firefox 2-3.7, Safari 3-5,
+//                   Chrome 4-6, Opera 9.6-10.5.
+// 
+// Release History
+// 
+// 0.7   - (10/23/2010) Polished and tested
+// 0.1   - (5/2/2010) Initial release
+//
+// See README for usage
 
 ;(function($) {
 
     // A reference to the bubbles prototype
     var bp,
+    
     // When called, initialize bubbles with arguments given
     bubbles = function() {
         return new bp.init(arguments);
@@ -44,7 +51,7 @@
             // This is just a shortcut if you want the same kind
             // of default map, just with a different center
             // Defaults to center of USA, or if you prefer,
-            // create your own map and pass that in instead (see init).
+            // create your own map and pass that in instead (see init function below).
             center: { lat: 36.915, lng: -95.225 },
             
             // An unlimited number of markers.
@@ -78,7 +85,11 @@
             iwHeight: 165
             
         },
+        /**
+        *   @constructor
+        */
         init : function(a) {
+            
             // Put args in an array
             var args = Array.prototype.slice.call(a);
             
@@ -138,6 +149,7 @@
     };
     bp.init.prototype = bp;
     
+    // Info Window setup
     var infoBox = function(args) {
         var ibox = this;
         google.maps.OverlayView.call(ibox);
@@ -172,20 +184,20 @@
             div = box.div_;
         if(!div) {
             div = box.div_ = $('<div/>').css({
-                'border'       : '0 none',
-                'position'   : 'absolute',
-                'background' : 'url(' + box.windowImage + ') no-repeat top left',
-                width        : this.width,
-                height       : this.height,
-                'padding'    : '10px 20px 30px 20px'
+                'border': '0 none',
+                'position': 'absolute',
+                'background': 'url(' + box.windowImage + ') no-repeat top left',
+                width: this.width,
+                height: this.height,
+                'padding': '10px 20px 30px 20px'
             });
             
-            var topDiv = $('<div/>').css({'textAlign': 'right', 'marginBottom' : '-5px'});
+            var topDiv   = $('<div/>').css({'textAlign': 'right', 'marginBottom' : '-5px'});
             var closeImg = $('<img/>')
                 .css({
-                    width    : 11,
-                    height   : 11,
-                    'cursor' : 'pointer'
+                    width: 11,
+                    height: 11,
+                    'cursor': 'pointer'
                 })
                 .attr('src', box.closeImage)
                 .appendTo(topDiv);
@@ -197,23 +209,22 @@
             }
             
             google.maps.event.addDomListener(closeImg[0], 'click', removeInfoBox(this));
-
+            
+            // Append items to DOM, adjust map
             topDiv.appendTo(div);
             $(box.content).appendTo(div);
-            div.remove().
-              appendTo(panes.floatPane);
+            div.remove().appendTo(panes.floatPane);
             this.panMap();
         } else if (div.parentNode != panes.floatPane) {
+            
             // The panes have changed.  Move the div.
-            div.remove().
-              appendTo(panes.floatPane);
+            div.remove().appendTo(panes.floatPane);
         }
     };
     
     // Pan the map to fit the InfoBox.
     infoBox.prototype.panMap = function() {
-        // If we go beyond map, pan map
-        var map = this.map,
+        var map    = this.map,
             bounds = map.getBounds();
         if (!bounds) return;
         
@@ -221,7 +232,7 @@
         var position = this.latlng;
         
         // The dimension of the infowindow
-        var iwWidth = this.width,
+        var iwWidth  = this.width,
             iwHeight = this.height;
         
         // The offset position of the infowindow
@@ -233,24 +244,24 @@
             padY = 40;
         
         // The degrees per pixel
-        var mapDiv = map.getDiv(),
-            mapWidth = mapDiv.offsetWidth,
-            mapHeight = mapDiv.offsetHeight,
+        var mapDiv     = map.getDiv(),
+            mapWidth   = mapDiv.offsetWidth,
+            mapHeight  = mapDiv.offsetHeight,
             boundsSpan = bounds.toSpan(),
-            longSpan = boundsSpan.lng(),
-            latSpan = boundsSpan.lat(),
-            degPixelX = longSpan / mapWidth,
-            degPixelY = latSpan / mapHeight;
+            longSpan   = boundsSpan.lng(),
+            latSpan    = boundsSpan.lat(),
+            degPixelX  = longSpan / mapWidth,
+            degPixelY  = latSpan / mapHeight;
         
         // The bounds of the map
-        var mapWestLng = bounds.getSouthWest().lng(),
-            mapEastLng = bounds.getNorthEast().lng(),
+        var mapWestLng  = bounds.getSouthWest().lng(),
+            mapEastLng  = bounds.getNorthEast().lng(),
             mapNorthLat = bounds.getNorthEast().lat(),
             mapSouthLat = bounds.getSouthWest().lat();
         
         // The bounds of the infowindow
-        var iwWestLng = position.lng() + (iwOffsetX - padX) * degPixelX,
-            iwEastLng = position.lng() + (iwOffsetX + iwWidth + padX) * degPixelX,
+        var iwWestLng  = position.lng() + (iwOffsetX - padX) * degPixelX,
+            iwEastLng  = position.lng() + (iwOffsetX + iwWidth + padX) * degPixelX,
             iwNorthLat = position.lat() - (iwOffsetY - padY) * degPixelY,
             iwSouthLat = position.lat() - (iwOffsetY + iwHeight + padY) * degPixelY;
         
@@ -299,14 +310,12 @@
     // Extend jQuery
     $.fn.bubbles = function() {
         var args = Array.prototype.slice.call(arguments);
-        this.each(function() {
+        return this.each(function() {
             // Add the containing element to the array of args
             args.unshift(this);
             // Apply bubbles to each element
             bubbles.apply(null, args);
         });
-        // return jQuery object for chaining
-        return this;
     };
 
 })(jQuery);
