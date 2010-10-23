@@ -6,12 +6,12 @@
 *   http://timmywillison.com/licence/
 */
 
-// *Version: 1.2, Last updated: 10/5/2010*
+// *Version: 0.7, Last updated: 10/5/2010*
 // 
 // Demo: http://timmywillison.com/samples/bubbles/example.html
 // Github: http://github.com/timmywil/jquery-google-bubbles
 // Source: http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.js ( 11.9 kb )
-// (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.min.js ( 3.9 kb )
+// (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.min.js ( 4.0 kb )
 // 
 // License
 // 

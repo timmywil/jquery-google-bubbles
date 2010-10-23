@@ -1,9 +1,9 @@
 <h1>jQuery Google Bubbles</h1>
 
-Demo: <a href="http://timmywillison.com/samples/bubbles/example.html">http://timmywillison.com/samples/bubbles/example.html</a> 
-Github: <a href="http://github.com/timmywil/jquery-google-bubbles">http://github.com/timmywil/jquery-google-bubbles</a>
-Source: <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js</a> ( 11 kb )
-(minified): <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js</a> ( 3.9 kb )
+Demo: <a href="http://timmywillison.com/samples/bubbles/example.html">http://timmywillison.com/samples/bubbles/example.html</a><br/>
+Github: <a href="http://github.com/timmywil/jquery-google-bubbles">http://github.com/timmywil/jquery-google-bubbles</a><br/>
+Source: <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.js</a> ( 11 kb )<br/>
+(minified): <a href="http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js">http://github.com/timmywil/jquery-google-bubbles/raw/master/bubbles.jquery.min.js</a> ( 4.0 kb )<br/>
 
 *Version: 0.7, Last updated: 10/23/2010*
 
@@ -67,6 +67,6 @@ $('#another-map').bubbles({
 });
 </pre>
 
-*tip: If all you need is a custom pin and no custom info window,
+*TIP: If all you need is a custom pin and no custom info window,
  don't use this plugin.  That is too easy with the normal
  Google API (see the attachInfo function below).*
