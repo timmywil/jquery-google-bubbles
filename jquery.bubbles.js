@@ -1,6 +1,5 @@
 /**
 *   @preserve jQuery Google Bubbles: Google Maps Custom Info Windows - v0.7 - 10/23/2010
-*   http://timmywillison.com/samples/bubbles/example.html
 *   Copyright (c) 2010 timmy willison
 *   Dual licensed under the MIT and GPL licences.
 *   http://timmywillison.com/licence/
@@ -8,7 +7,7 @@
 
 // *Version: 0.7, Last updated: 10/5/2010*
 // 
-// Demo: http://timmywillison.com/samples/bubbles/example.html
+// Demo: http://timmywillison.com/samples/bubbles/
 // Github: http://github.com/timmywil/jquery-google-bubbles
 // Source: http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.js ( 11.9 kb )
 // (minified): http://github.com/timmywil/jquery-google-bubbles/raw/master/jquery.bubbles.min.js ( 4.0 kb )
